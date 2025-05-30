@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 메모장</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>나의 메모장 📝</h1>
+        <div class="memo-input">
+            <input type="text" id="memoTitle" placeholder="제목을 입력하세요">
+            <textarea id="memoContent" placeholder="메모를 입력하세요"></textarea>
+            <button onclick="addMemo()">메모 추가</button>
+        </div>
+        <div class="memo-list" id="memoList">
+            <!-- 메모들이 여기에 추가됩니다 -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
