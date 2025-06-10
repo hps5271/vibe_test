@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    padding: 40px 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: 32px 24px 24px 24px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+}
+
+.desc {
+    text-align: center;
+    color: #bdbdbd;
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+}
+
+.todo-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.todo-input-wrap input[type="text"] {
+    flex: 1;
+    padding: 12px 14px;
+    border: 2px solid #d1d5fa;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.todo-input-wrap input[type="text"]:focus {
+    border: 2px solid #a3a8f7;
+}
+
+.add-btn {
+    background: #a3a8f7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-btn:hover {
+    background: #7b81e6;
+}
+
+.memo-list {
+    margin-bottom: 18px;
+}
+
+.memo-item {
+    display: flex;
+    align-items: center;
+    background: #f8f8ff;
+    border: 2px solid #d1d5fa;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    position: relative;
+    gap: 10px;
+}
+
+.check-btn {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: #a3a8f7;
+    margin-right: 6px;
+    cursor: pointer;
+    outline: none;
+}
+
+.checked .memo-text {
+    text-decoration: line-through;
+    color: #bdbdbd;
+}
+
+.memo-text {
+    flex: 1;
+    font-size: 1.08rem;
+    color: #333;
+    word-break: break-all;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: color 0.2s;
+}
+.delete-btn:hover {
+    color: #cc0000;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: color 0.2s;
+}
+.star-btn.important {
+    color: #ff69b4;
+}
+.star-btn:hover {
+    color: #ff69b4;
+}
+
+.clear-btn {
+    width: 100%;
+    background: #ff5e3a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+.clear-btn:hover {
+    background: #e64522;
+} 

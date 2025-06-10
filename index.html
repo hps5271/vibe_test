@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TODO LIST</h1>
+        <p class="desc">이곳에 해야할 일을 적어주세요</p>
+        <div class="todo-input-wrap">
+            <input type="text" id="memoContent" placeholder="여기에 할일이 표시됩니다">
+            <button class="add-btn" onclick="addMemo()">+</button>
+        </div>
+        <div class="memo-list" id="memoList">
+            <!-- 할일 목록이 여기에 표시됩니다 -->
+        </div>
+        <button class="clear-btn" onclick="clearAll()">Clear All</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
