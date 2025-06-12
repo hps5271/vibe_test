@@ -102,10 +102,43 @@ h1 {
     background: #f5f7ff;
 }
 
-.check-icon {
+.check-btn {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    border: 2px solid #7b8df7;
+    border-radius: 4px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 14px;
+    font-size: 1.1rem;
     color: #7b8df7;
-    font-size: 1.2rem;
-    margin-right: 10px;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+    padding: 0;
+    position: relative;
+}
+
+.check-btn:focus {
+    outline: none;
+    border-color: #5a6edc;
+}
+
+.check-btn.checked::after {
+    content: '\2714';
+    color: #ff4444;
+    font-size: 1.1rem;
+    position: absolute;
+    left: 4px;
+    top: 1px;
+}
+
+.memo-item.checked .memo-text {
+    color: #b0b0b0;
+    text-decoration: line-through;
 }
 
 .memo-text {
@@ -145,4 +178,22 @@ h1 {
 
 .clear-btn:hover {
     background: #cc0000;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    color: #bbb;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: color 0.2s;
+}
+
+.star-btn.important {
+    color: #ff69b4;
+}
+
+.star-btn:hover {
+    color: #ff69b4;
 } 

@@ -74,7 +74,7 @@ function displayMemos() {
         const memoElement = document.createElement('div');
         memoElement.className = 'memo-item' + (memo.checked ? ' checked' : '');
         memoElement.innerHTML = `
-            <button class="check-btn" onclick="toggleCheck(${memo.id})">${memo.checked ? '✔️' : '✓'}</button>
+            <button class="check-btn${memo.checked ? ' checked' : ''}" onclick="toggleCheck(${memo.id})"></button>
             <span class="memo-text">${memo.content}</span>
             <button class="delete-btn" onclick="deleteMemo(${memo.id})">🗑️</button>
             <button class="star-btn${memo.important ? ' important' : ''}" onclick="toggleImportant(${memo.id})">★</button>
