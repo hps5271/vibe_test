@@ -6,86 +6,143 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    padding: 20px;
+    background-color: #fff;
+    padding: 0;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 400px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 32px 24px 24px 24px;
 }
 
 h1 {
     text-align: center;
-    color: #333;
-    margin-bottom: 30px;
+    color: #222;
+    margin-bottom: 12px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
-.memo-input {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+.desc {
+    text-align: center;
+    color: #b0b0b0;
+    margin-bottom: 18px;
+    font-size: 1.05rem;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
+.todo-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
 }
 
-textarea {
-    height: 100px;
-    resize: vertical;
+#memoContent {
+    flex: 1;
+    padding: 12px 14px;
+    border: 2px solid #bfc6f7;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
 }
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
+#memoContent:focus {
+    border: 2px solid #7b8df7;
+}
+
+.add-btn {
+    background: #7b8df7;
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    font-size: 2rem;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 16px;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
 }
 
-button:hover {
-    background-color: #45a049;
+.add-btn:hover {
+    background: #5a6edc;
+}
+
+.memo-list {
+    margin-bottom: 24px;
 }
 
 .memo-item {
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border: 2px solid #bfc6f7;
+    border-radius: 8px;
+    padding: 12px 16px;
     margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.memo-item h3 {
+    font-size: 1.08rem;
     color: #333;
-    margin-bottom: 10px;
+    box-shadow: none;
+    position: relative;
+    transition: border 0.2s;
 }
 
-.memo-item p {
-    color: #666;
-    margin-bottom: 10px;
+.memo-item.completed {
+    color: #b0b0b0;
+    text-decoration: line-through;
+    background: #f5f7ff;
+}
+
+.check-icon {
+    color: #7b8df7;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.memo-text {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .delete-btn {
-    background-color: #ff4444;
-    color: white;
-    padding: 5px 10px;
+    background: none;
     border: none;
-    border-radius: 3px;
+    color: #ff4444;
+    font-size: 1.3rem;
     cursor: pointer;
-    float: right;
+    margin-left: 10px;
+    transition: color 0.2s;
 }
 
 .delete-btn:hover {
-    background-color: #cc0000;
+    color: #cc0000;
+}
+
+.clear-btn {
+    width: 100%;
+    background: #ff4444;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.clear-btn:hover {
+    background: #cc0000;
 } 
