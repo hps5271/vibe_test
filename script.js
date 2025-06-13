@@ -139,8 +139,10 @@ function renderTodos() {
                 <div class="todo-checkbox">
                     <input type="checkbox" ${todo.completed ? 'checked' : ''} onchange="toggleComplete('${todoId}')">
                 </div>
-                <span class="todo-text">${todo.text}</span>
-                <span class="todo-author">작성자: ${todo.username || '익명'}</span>
+                <div class="todo-content">
+                    <span class="todo-text">${todo.text}</span>
+                    <span class="todo-author">작성자: ${todo.username || '익명'}</span>
+                </div>
                 <div class="todo-actions">
                     <button class="delete" onclick="deleteTodo('${todoId}')">
                         <i class="fas fa-trash"></i>
