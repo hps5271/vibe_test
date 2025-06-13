@@ -93,14 +93,16 @@ function renderTodos() {
             todoItem.className = `todo-item ${todo.completed ? 'completed' : ''} ${todo.important ? 'important' : ''}`;
             
             todoItem.innerHTML = `
+                <div class="todo-actions">
+                    <button class="important" onclick="toggleImportant('${todoId}')">
+                        <i class="fas fa-star ${todo.important ? 'important-star' : ''}"></i>
+                    </button>
+                </div>
                 <div class="todo-checkbox">
                     <input type="checkbox" ${todo.completed ? 'checked' : ''} onchange="toggleComplete('${todoId}')">
                 </div>
                 <span class="todo-text">${todo.text}</span>
                 <div class="todo-actions">
-                    <button class="important" onclick="toggleImportant('${todoId}')">
-                        <i class="fas fa-star"></i>
-                    </button>
                     <button class="delete" onclick="deleteTodo('${todoId}')">
                         <i class="fas fa-trash"></i>
                     </button>

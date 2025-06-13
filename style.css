@@ -95,22 +95,30 @@ button:hover {
 .todo-actions button {
     padding: 5px 10px;
     font-size: 14px;
-}
-
-.todo-actions .delete {
-    background-color: #ff4444;
-}
-
-.todo-actions .delete:hover {
-    background-color: #cc0000;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .todo-actions .important {
-    background-color: #ffbb33;
+    color: #ccc;
+    transition: color 0.3s ease;
 }
 
 .todo-actions .important:hover {
-    background-color: #ff8800;
+    color: #ff4444;
+}
+
+.todo-actions .important .important-star {
+    color: #ff4444;
+}
+
+.todo-actions .delete {
+    color: #ff4444;
+}
+
+.todo-actions .delete:hover {
+    color: #cc0000;
 }
 
 .todo-actions .complete {
@@ -123,5 +131,5 @@ button:hover {
 
 .important .todo-text {
     font-weight: bold;
-    color: #ff8800;
+    color: #ff4444;
 } 
