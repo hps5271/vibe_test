@@ -17,7 +17,13 @@
         <div class="container">
             <div class="header-content">
                 <h1>할일 관리</h1>
-                <button class="login-btn" onclick="location.href='login.html'">
+                <div id="userInfo" style="display: none;">
+                    <span id="welcomeMessage"></span>
+                    <button class="logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> 로그아웃
+                    </button>
+                </div>
+                <button id="loginBtn" class="login-btn" onclick="location.href='login.html'">
                     <i class="fas fa-user"></i> 로그인
                 </button>
             </div>

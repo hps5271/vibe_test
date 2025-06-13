@@ -13,10 +13,40 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 const todosRef = database.ref('todos');
+const auth = firebase.auth();
 
 // DOM 요소
 const todoInput = document.getElementById('todoInput');
 const todoList = document.getElementById('todoList');
+const userInfo = document.getElementById('userInfo');
+const welcomeMessage = document.getElementById('welcomeMessage');
+const loginBtn = document.getElementById('loginBtn');
+
+// 로그인 상태 관리
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        // 로그인 상태
+        userInfo.style.display = 'flex';
+        loginBtn.style.display = 'none';
+        welcomeMessage.textContent = `${user.displayName}님 환영합니다`;
+    } else {
+        // 로그아웃 상태
+        userInfo.style.display = 'none';
+        loginBtn.style.display = 'flex';
+    }
+});
+
+// 로그아웃 함수
+function logout() {
+    auth.signOut()
+        .then(() => {
+            window.location.reload();
+        })
+        .catch((error) => {
+            console.error('로그아웃 중 오류 발생:', error);
+            alert('로그아웃 중 오류가 발생했습니다.');
+        });
+}
 
 // 할일 추가 함수
 function addTodo() {

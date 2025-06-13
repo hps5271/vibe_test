@@ -24,7 +24,7 @@ body {
 }
 
 .header h1 {
-    color: white;
+    color: #000000;
     margin: 0;
 }
 
@@ -173,4 +173,39 @@ button:hover {
 .important .todo-text {
     font-weight: bold;
     color: #ff4444;
+}
+
+#userInfo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#welcomeMessage {
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.logout-btn {
+    background-color: white;
+    color: #4CAF50;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.logout-btn i {
+    font-size: 18px;
 } 
