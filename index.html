@@ -10,26 +10,6 @@
         .header h1 {
             color: #000000;
         }
-        .welcome-message {
-            margin-right: 15px;
-            font-weight: bold;
-            color: #333;
-        }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .user-section {
-            display: flex;
-            align-items: center;
-        }
-        .logout-btn {
-            background-color: #dc3545;
-        }
-        .logout-btn:hover {
-            background-color: #c82333;
-        }
     </style>
 </head>
 <body>
@@ -37,12 +17,9 @@
         <div class="container">
             <div class="header-content">
                 <h1>할일 관리</h1>
-                <div class="user-section">
-                    <span class="welcome-message" id="welcomeMessage" style="display: none;"></span>
-                    <button class="login-btn" id="authButton" onclick="handleAuth()">
-                        <i class="fas fa-user"></i> 로그인
-                    </button>
-                </div>
+                <button class="login-btn" onclick="location.href='login.html'">
+                    <i class="fas fa-user"></i> 로그인
+                </button>
             </div>
         </div>
     </div>
@@ -60,57 +37,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-    <script>
-        // Firebase 설정
-        const firebaseConfig = {
-            apiKey: "AIzaSyAaF3E1dP-B0_1Qcjfnz2eHXzpa1XqKxo8",
-            authDomain: "vibe-test-backend.firebaseapp.com",
-            projectId: "vibe-test-backend",
-            storageBucket: "vibe-test-backend.firebasestorage.app",
-            messagingSenderId: "464002821938",
-            appId: "1:464002821938:web:2afbdd22e7eca23c6cf12b",
-            databaseURL: "https://vibe-test-backend-default-rtdb.asia-southeast1.firebasedatabase.app/"
-        };
-
-        // Firebase 초기화
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-
-        // 인증 상태 변경 감지
-        auth.onAuthStateChanged((user) => {
-            const welcomeMessage = document.getElementById('welcomeMessage');
-            const authButton = document.getElementById('authButton');
-
-            if (user) {
-                // 로그인 상태
-                welcomeMessage.textContent = `${user.displayName || user.email}님 환영합니다`;
-                welcomeMessage.style.display = 'block';
-                authButton.innerHTML = '<i class="fas fa-sign-out-alt"></i> 로그아웃';
-                authButton.classList.add('logout-btn');
-            } else {
-                // 로그아웃 상태
-                welcomeMessage.style.display = 'none';
-                authButton.innerHTML = '<i class="fas fa-user"></i> 로그인';
-                authButton.classList.remove('logout-btn');
-            }
-        });
-
-        // 로그인/로그아웃 처리
-        function handleAuth() {
-            const user = auth.currentUser;
-            if (user) {
-                // 로그아웃
-                auth.signOut().then(() => {
-                    window.location.href = 'index.html';
-                }).catch((error) => {
-                    alert('로그아웃 실패: ' + error.message);
-                });
-            } else {
-                // 로그인 페이지로 이동
-                window.location.href = 'login.html';
-            }
-        }
-    </script>
     <script src="script.js"></script>
 </body>
 </html>
