@@ -52,11 +52,19 @@ function logout() {
 function addTodo() {
     const text = todoInput.value.trim();
     if (text) {
+        const user = auth.currentUser;
+        if (!user) {
+            alert('할일을 추가하려면 로그인이 필요합니다.');
+            return;
+        }
+
         const todo = {
             text: text,
             completed: false,
             important: false,
-            createdAt: firebase.database.ServerValue.TIMESTAMP
+            createdAt: firebase.database.ServerValue.TIMESTAMP,
+            userId: user.uid,
+            username: user.displayName
         };
         
         todosRef.push(todo)
@@ -132,6 +140,7 @@ function renderTodos() {
                     <input type="checkbox" ${todo.completed ? 'checked' : ''} onchange="toggleComplete('${todoId}')">
                 </div>
                 <span class="todo-text">${todo.text}</span>
+                <span class="todo-author">작성자: ${todo.username || '익명'}</span>
                 <div class="todo-actions">
                     <button class="delete" onclick="deleteTodo('${todoId}')">
                         <i class="fas fa-trash"></i>
