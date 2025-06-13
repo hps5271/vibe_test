@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - 할일 관리 앱</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-form button {
+            margin-top: 10px;
+        }
+
+        .back-btn {
+            background-color: #666;
+            margin-top: 10px;
+        }
+
+        .back-btn:hover {
+            background-color: #555;
+        }
+
+        .signup-btn {
+            background-color: #2196F3;
+            margin-top: 10px;
+        }
+
+        .signup-btn:hover {
+            background-color: #1976D2;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button-group button {
+            flex: 1;
+        }
+
+        .error-message {
+            color: #ff4444;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container login-container">
+        <h1>로그인</h1>
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="email">이메일</label>
+                <input type="email" id="email" required placeholder="이메일을 입력하세요">
+                <div class="error-message" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" required placeholder="비밀번호를 입력하세요">
+                <div class="error-message" id="passwordError"></div>
+            </div>
+            <div class="button-group">
+                <button type="submit" id="loginButton">로그인</button>
+                <button type="button" class="signup-btn" onclick="location.href='signup.html'">회원가입</button>
+            </div>
+            <button type="button" class="back-btn" onclick="location.href='index.html'">뒤로 가기</button>
+        </form>
+        <div class="loading" id="loading">
+            <p>로그인 처리 중...</p>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script>
+        // Firebase 설정
+        const firebaseConfig = {
+            apiKey: "AIzaSyAaF3E1dP-B0_1Qcjfnz2eHXzpa1XqKxo8",
+            authDomain: "vibe-test-backend.firebaseapp.com",
+            projectId: "vibe-test-backend",
+            storageBucket: "vibe-test-backend.firebasestorage.app",
+            messagingSenderId: "464002821938",
+            appId: "1:464002821938:web:2afbdd22e7eca23c6cf12b",
+            databaseURL: "https://vibe-test-backend-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        };
+
+        // Firebase 초기화
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // 로딩 상태 관리
+        const loading = document.getElementById('loading');
+        const loginButton = document.getElementById('loginButton');
+
+        function showLoading() {
+            loading.classList.add('active');
+            loginButton.disabled = true;
+        }
+
+        function hideLoading() {
+            loading.classList.remove('active');
+            loginButton.disabled = false;
+        }
+
+        // 로그인 폼 제출 처리
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            // 에러 메시지 초기화
+            document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+
+            try {
+                showLoading();
+
+                // Firebase 로그인 처리
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                
+                // 로그인 성공
+                window.location.href = 'index.html';
+
+            } catch (error) {
+                hideLoading();
+                
+                // 에러 메시지 처리
+                let errorMessage = '';
+                switch (error.code) {
+                    case 'auth/invalid-email':
+                        errorMessage = '유효하지 않은 이메일 형식입니다.';
+                        document.getElementById('emailError').textContent = errorMessage;
+                        document.getElementById('emailError').style.display = 'block';
+                        break;
+                    case 'auth/user-disabled':
+                        errorMessage = '비활성화된 계정입니다.';
+                        document.getElementById('emailError').textContent = errorMessage;
+                        document.getElementById('emailError').style.display = 'block';
+                        break;
+                    case 'auth/user-not-found':
+                        errorMessage = '등록되지 않은 이메일입니다.';
+                        document.getElementById('emailError').textContent = errorMessage;
+                        document.getElementById('emailError').style.display = 'block';
+                        break;
+                    case 'auth/wrong-password':
+                        errorMessage = '잘못된 비밀번호입니다.';
+                        document.getElementById('passwordError').textContent = errorMessage;
+                        document.getElementById('passwordError').style.display = 'block';
+                        break;
+                    default:
+                        alert('로그인 실패: ' + error.message);
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

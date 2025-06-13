@@ -6,10 +6,24 @@
     <title>할일 관리 앱</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .header h1 {
+            color: #000000;
+        }
+    </style>
 </head>
 <body>
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>할일 관리</h1>
+                <button class="login-btn" onclick="location.href='login.html'">
+                    <i class="fas fa-user"></i> 로그인
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="container">
-        <h1>할일 관리</h1>
         <div class="todo-input">
             <input type="text" id="todoInput" placeholder="할일을 입력하세요">
             <button onclick="addTodo()">추가</button>
@@ -22,6 +36,7 @@
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

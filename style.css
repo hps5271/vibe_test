@@ -7,7 +7,48 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f5f5f5;
-    padding: 20px;
+    padding: 0;
+}
+
+.header {
+    background-color: #4CAF50;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    color: white;
+    margin: 0;
+}
+
+.login-btn {
+    background-color: white;
+    color: #4CAF50;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.login-btn i {
+    font-size: 18px;
 }
 
 .container {
